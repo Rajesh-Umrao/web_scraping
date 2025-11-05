@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SQL Basics Quiz</title>
+<style>
+  body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; }
+  h1 { text-align: center; }
+  .question { background: white; padding: 15px; margin-bottom: 15px; border-radius: 8px; }
+  .feedback { display: none; font-weight: bold; margin-top: 10px; }
+  .correct { color: green; }
+  .wrong { color: red; }
+  button { margin-top: 10px; background-color: #007BFF; color: white; border: none; padding: 6px 10px; border-radius: 5px; cursor: pointer; }
+  button:hover { background-color: #0056b3; }
+</style>
+</head>
+<body>
+
+<h1>🧠 SQL Basics Quiz</h1>
+
+<div class="question">
+  <p><b>Q1.</b> Which SQL statement is used to retrieve data from a database?</p>
+  <label><input type="radio" name="q1" value="A"> GET</label><br>
+  <label><input type="radio" name="q1" value="B"> EXTRACT</label><br>
+  <label><input type="radio" name="q1" value="C"> SELECT</label><br>
+  <label><input type="radio" name="q1" value="D"> READ</label><br>
+  <button onclick="checkAnswer('q1','C','The SELECT statement is used to retrieve data from one or more tables.')">Check Answer</button>
+  <div id="feedback-q1" class="feedback"></div>
+</div>
+
+<div class="question">
+  <p><b>Q2.</b> What does the SQL keyword <code>DISTINCT</code> do?</p>
+  <label><input type="radio" name="q2" value="A"> Deletes duplicate rows</label><br>
+  <label><input type="radio" name="q2" value="B"> Returns only unique values</label><br>
+  <label><input type="radio" name="q2" value="C"> Sorts results in descending order</label><br>
+  <label><input type="radio" name="q2" value="D"> Filters rows using conditions</label><br>
+  <button onclick="checkAnswer('q2','B','DISTINCT returns only unique (non-duplicate) values from a column or query.')">Check Answer</button>
+  <div id="feedback-q2" class="feedback"></div>
+</div>
+
+<div class="question">
+  <p><b>Q3.</b> Which clause is used to filter rows in a SELECT query?</p>
+  <label><input type="radio" name="q3" value="A"> WHERE</label><br>
+  <label><input type="radio" name="q3" value="B"> FILTER</label><br>
+  <label><input type="radio" name="q3" value="C"> HAVING</label><br>
+  <label><input type="radio" name="q3" value="D"> GROUP BY</label><br>
+  <button onclick="checkAnswer('q3','A','The WHERE clause filters rows based on a condition before grouping or ordering.')">Check Answer</button>
+  <div id="feedback-q3" class="feedback"></div>
+</div>
+
+<div class="question">
+  <p><b>Q4.</b> Which SQL statement is used to remove all records from a table but keep the table structure?</p>
+  <label><input type="radio" name="q4" value="A"> DELETE</label><br>
+  <label><input type="radio" name="q4" value="B"> DROP</label><br>
+  <label><input type="radio" name="q4" value="C"> TRUNCATE</label><br>
+  <label><input type="radio" name="q4" value="D"> REMOVE</label><br>
+  <button onclick="checkAnswer('q4','C','TRUNCATE removes all rows but keeps the table structure for future use.')">Check Answer</button>
+  <div id="feedback-q4" class="feedback"></div>
+</div>
+
+<div class="question">
+  <p><b>Q5.</b> Which of the following SQL statements will count the number of employees in a table named <code>Employees</code>?</p>
+  <label><input type="radio" name="q5" value="A"> SELECT COUNT(*) FROM Employees;</label><br>
+  <label><input type="radio" name="q5" value="B"> SELECT TOTAL(*) FROM Employees;</label><br>
+  <label><input type="radio" name="q5" value="C"> SELECT NUMBER(*) FROM Employees;</label><br>
+  <label><input type="radio" name="q5" value="D"> COUNT(Employees);</label><br>
+  <button onclick="checkAnswer('q5','A','COUNT(*) returns the total number of rows in a table or result set.')">Check Answer</button>
+  <div id="feedback-q5" class="feedback"></div>
+</div>
+
+<script>
+function checkAnswer(q, correct, explanation) {
+  const selected = document.querySelector(`input[name="${q}"]:checked`);
+  const feedback = document.getElementById(`feedback-${q}`);
+  if (!selected) {
+    alert("Please select an answer!");
+    return;
+  }
+  if (selected.value === correct) {
+    feedback.innerHTML = "✅ Correct! " + explanation;
+    feedback.className = "feedback correct";
+  } else {
+    feedback.innerHTML = "❌ Incorrect. " + explanation;
+    feedback.className = "feedback wrong";
+  }
+  feedback.style.display = "block";
+}
+</script>
+
+</body>
+</html>
